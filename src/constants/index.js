@@ -1,20 +1,18 @@
 import {
    
     javascript,
-    typescript,
+    flutter,
     html,
     css,
     reactjs,
-    redux,
+    python,
     tailwind,
     nodejs,
     mongodb,
     git,
     figma,
     docker,
-    carrent,
-    tripguide,
-    threejs,
+    blender,
     wepictit,
     car,
     chatbot,
@@ -60,16 +58,16 @@ import {
       icon: javascript,
     },
     {
-      name: "TypeScript",
-      icon: typescript,
+      name: "flutter",
+      icon: flutter,
     },
     {
       name: "React JS",
       icon: reactjs,
     },
     {
-      name: "Redux Toolkit",
-      icon: redux,
+      name: "python",
+      icon: python,
     },
     {
       name: "Tailwind CSS",
@@ -84,8 +82,8 @@ import {
       icon: mongodb,
     },
     {
-      name: "Three JS",
-      icon: threejs,
+      name: "blender",
+      icon: blender,
     },
     {
       name: "git",
