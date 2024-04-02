@@ -4,7 +4,7 @@ import { github, linkedin, instagram, facebook } from "../assets";
 const Contact = () => {
   return (
     <div className="bg-tertiary p-16 rounded-lg text-center">
-      <h2 className="text-3xl font-bold text-white mb-8">Contact Me</h2>
+      <h2 className="text-3xl font-bold text-white mb-8">Contact</h2>
       <div className="flex justify-center mb-8">
         <a
           href="https://www.linkedin.com/in/amani-sedrat-59781926b"
@@ -15,7 +15,7 @@ const Contact = () => {
           <img
             src={linkedin} // Replace with your LinkedIn logo image URL
             alt="LinkedIn"
-            className="h-10 w-10 cursor-pointer transition duration-300 transform hover:scale-110 filter-white"
+            className="h-8 w-8 cursor-pointer transition duration-300 transform hover:scale-110 filter-white"
           />
         </a>
         <a
@@ -27,7 +27,7 @@ const Contact = () => {
           <img
             src={github} // Replace with your GitHub logo image URL
             alt="GitHub"
-            className="h-10 w-10 cursor-pointer transition duration-300 transform hover:scale-110"
+            className="h-8 w-8 cursor-pointer transition duration-300 transform hover:scale-110"
           />
         </a>
         <a
@@ -39,7 +39,7 @@ const Contact = () => {
           <img
             src={instagram} // Replace with your Instagram logo image URL
             alt="Instagram"
-            className="h-10 w-10 cursor-pointer transition duration-300 transform hover:scale-110 filter-white"
+            className="h-8 w-8 cursor-pointer transition duration-300 transform hover:scale-110 filter-white"
           />
         </a>
         <a
@@ -51,11 +51,11 @@ const Contact = () => {
           <img
             src={facebook} // Replace with your Facebook logo image URL
             alt="Facebook"
-            className="h-10 w-10 cursor-pointer transition duration-300 transform hover:scale-110 filter-white"
+            className="h-8 w-8 cursor-pointer transition duration-300 transform hover:scale-110 filter-white"
           />
         </a>
       </div>
-      <p className="text-white text-sm">Contact me at: a_sedrat@estin.dz</p>
+      <a href="mailto:a_sedrat@estin.dz" className="text-white text-sm">Contact me at: a_sedrat@estin.dz</a>
     </div>
   );
 };
