@@ -30,6 +30,10 @@ import {
       title: "About",
     },
     {
+      id: "toolset",
+      title: "Toolset",
+    },
+    {
       id: "works",
       title: "Projects",
     },
@@ -37,6 +41,7 @@ import {
       id: "contact",
       title: "Contact",
     },
+  
   ];
   
   
