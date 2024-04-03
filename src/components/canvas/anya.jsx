@@ -1,6 +1,7 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import * as THREE from 'three';
 
 import CanvasLoader from "../Loader";
 
@@ -21,7 +22,7 @@ const Computers = ({ isMobile }) => {
       <pointLight intensity={1} />
       <primitive
         object={anyya.scene}
-        scale={isMobile ? 3 : 6.5}
+        scale={isMobile ? 2 : 6}
         position={isMobile ? [0, -3, -2] : [0, -3.25, -4]}
         rotation={[-0.01, 1, -0.1]}
       />
@@ -31,25 +32,45 @@ const Computers = ({ isMobile }) => {
 
 const AnyaCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const rendererRef = useRef(null);
 
   useEffect(() => {
-    // Add a listener for changes to the screen size
     const mediaQuery = window.matchMedia("(max-width: 500px)");
-
-    // Set the initial value of the `isMobile` state variable
     setIsMobile(mediaQuery.matches);
 
-    // Define a callback function to handle changes to the media query
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
     };
 
-    // Add the callback function as a listener for changes to the media query
     mediaQuery.addEventListener("change", handleMediaQueryChange);
 
-    // Remove the listener when the component is unmounted
     return () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    
+    const renderer = new THREE.WebGLRenderer();
+    rendererRef.current = renderer;
+
+
+    const handleContextLost = (event) => {
+      console.log('WebGL context lost', event);
+
+    };
+    renderer.domElement.addEventListener('webglcontextlost', handleContextLost);
+
+    
+    const handleContextRestored = () => {
+      console.log('WebGL context restored');
+      
+    };
+    renderer.domElement.addEventListener('webglcontextrestored', handleContextRestored);
+
+    return () => {
+      renderer.domElement.removeEventListener('webglcontextlost', handleContextLost);
+      renderer.domElement.removeEventListener('webglcontextrestored', handleContextRestored);
     };
   }, []);
 

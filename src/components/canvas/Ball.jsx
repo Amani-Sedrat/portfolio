@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Decal,
@@ -7,6 +7,8 @@ import {
   Preload,
   useTexture,
 } from "@react-three/drei";
+
+import * as THREE from "three";
 
 import CanvasLoader from "../Loader";
 
@@ -38,6 +40,30 @@ const Ball = (props) => {
 };
 
 const BallCanvas = ({ icon }) => {
+  const rendererRef = useRef(null);
+
+  useEffect(() => {
+    const renderer = new THREE.WebGLRenderer();
+    rendererRef.current = renderer;
+
+    const handleContextLost = (event) => {
+      console.log('WebGL context lost', event);
+    
+    };
+    renderer.domElement.addEventListener('webglcontextlost', handleContextLost);
+
+    const handleContextRestored = () => {
+      console.log('WebGL context restored');
+    
+    };
+    renderer.domElement.addEventListener('webglcontextrestored', handleContextRestored);
+
+    return () => {
+      renderer.domElement.removeEventListener('webglcontextlost', handleContextLost);
+      renderer.domElement.removeEventListener('webglcontextrestored', handleContextRestored);
+    };
+  }, []);
+
   return (
     <Canvas
       frameloop='demand'
