@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import StarsCanvas from "./canvas/Computers";
+import AnyaCanvas from "./canvas/anya";
 
 const Hero = () => {
   return (
@@ -20,12 +21,13 @@ const Hero = () => {
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
             full-stack developer <br className='sm:block hidden' />
-            Data Science enthusiast
+            & Data Science enthusiast
           </p>
         </div>
       </div>
 
        <StarsCanvas />
+       <AnyaCanvas />
     </section>
   );
 };
