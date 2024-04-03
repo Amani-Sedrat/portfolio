@@ -14,7 +14,10 @@ const About = () => {
 
       <p className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'>
      
-I'm a computer engineering student passionate about creating digital solutions. Skilled in web and mobile development, I love building user-friendly applications. I also have a keen interest in AI and data science, where I enjoy exploring algorithms and finding patterns in data. I'm excited to continue learning and using technology to solve real-world problems.
+      I'm a computer engineering student who loves diving into the digital world. I'm pretty handy at creating websites and apps that are easy for people to use. Plus, I'm really into AI and data science, where I love digging into datasets and uncovering insights.
+
+
+
       </p>
 
      
