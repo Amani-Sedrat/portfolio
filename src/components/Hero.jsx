@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
+import StarsCanvas from "./canvas/Computers";
 
 const Hero = () => {
   return (
@@ -25,7 +25,7 @@ const Hero = () => {
         </div>
       </div>
 
-       <ComputersCanvas /> 
+       <StarsCanvas />
     </section>
   );
 };
