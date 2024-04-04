@@ -4,6 +4,7 @@ import {
     flutter,
     html,
     css,
+    mysql,
     reactjs,
     python,
     tailwind,
@@ -11,7 +12,6 @@ import {
     mongodb,
     git,
     figma,
-    docker,
     blender,
     wepictit,
     car,
@@ -82,6 +82,10 @@ import {
       icon: mongodb,
     },
     {
+      name: "mysql",
+      icon: mysql,
+    },
+    {
       name: "blender",
       icon: blender,
     },
@@ -93,10 +97,7 @@ import {
       name: "figma",
       icon: figma,
     },
-    {
-      name: "docker",
-      icon: docker,
-    },
+  
   ];
  
   
