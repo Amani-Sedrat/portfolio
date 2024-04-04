@@ -5,9 +5,18 @@ import * as random from "maath/random/dist/maath-random.esm";
 import { Suspense, useState } from "react";
 import * as THREE from "three";
 
+
 const Stars = (props) => {
   const ref = useRef();
-  const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.2 }));
+
+  // Generate random points within a sphere
+  const generatePoints = () => {
+    const spherePoints = random.inSphere(new Float32Array(5001), { radius: 1.2 });
+    const validPoints = spherePoints.map((value) => (isNaN(value) ? 0 : value)); // Replace NaN with 0
+    return validPoints;
+  };
+
+  const sphere = generatePoints();
 
   useFrame((state, delta) => {
     ref.current.rotation.x -= delta / 10;
@@ -19,8 +28,8 @@ const Stars = (props) => {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
         <PointMaterial
           transparent
-          color='#f272c8'
-          size={0.002}
+          color="#f272c8"
+          size={0.003}
           sizeAttenuation={true}
           depthWrite={false}
         />
@@ -43,27 +52,33 @@ const StarsCanvas = () => {
 
     const handleContextLost = (event) => {
       console.log('WebGL context lost', event);
-    
+      // Handle WebGL context lost event
     };
-    renderer.domElement.addEventListener('webglcontextlost', handleContextLost);
 
     const handleContextRestored = () => {
       console.log('WebGL context restored');
-    
+      // Handle WebGL context restored event
     };
-    renderer.domElement.addEventListener('webglcontextrestored', handleContextRestored);
+
+    const canvas = renderer.domElement;
+    canvas.addEventListener('webglcontextlost', handleContextLost);
+    canvas.addEventListener('webglcontextrestored', handleContextRestored);
 
     return () => {
-      if (renderer.domElement) {
-        renderer.domElement.removeEventListener('webglcontextlost', handleContextLost);
-        renderer.domElement.removeEventListener('webglcontextrestored', handleContextRestored);
-      }
+      canvas.removeEventListener('webglcontextlost', handleContextLost);
+      canvas.removeEventListener('webglcontextrestored', handleContextRestored);
     };
   }, []);
 
   return (
     <div className='w-full h-auto absolute inset-0 z-[-1]'>
-      <Canvas camera={{ position: [0, 0, 1] }}>
+      <Canvas
+        camera={{ position: [0, 0, 1] }}
+        onCreated={({ gl }) => {
+          // Assign the renderer from useEffect to the context's renderer
+          gl.domElement = rendererRef.current.domElement;
+        }}
+      >
         <Suspense fallback={null}>
           <Stars />
         </Suspense>

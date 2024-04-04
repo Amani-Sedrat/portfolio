@@ -22,9 +22,9 @@ const Computers = ({ isMobile }) => {
       <pointLight intensity={1} />
       <primitive
         object={anyya.scene}
-        scale={isMobile ? 2 : 6}
+        scale={isMobile ? 2 : 6.2}
         position={isMobile ? [0, -3, -2] : [0, -3.25, -4]}
-        rotation={[-0.01, 1, -0.1]}
+        rotation={[-0.01, 0.8, -0.1]}
       />
     </mesh>
   );
@@ -50,27 +50,31 @@ const AnyaCanvas = () => {
   }, []);
 
   useEffect(() => {
-    
     const renderer = new THREE.WebGLRenderer();
     rendererRef.current = renderer;
 
+    if (!renderer.domElement) {
+      console.error("Renderer DOM element is null.");
+      return;
+    }
 
     const handleContextLost = (event) => {
       console.log('WebGL context lost', event);
-
+      // Handle context lost event here
     };
     renderer.domElement.addEventListener('webglcontextlost', handleContextLost);
 
-    
     const handleContextRestored = () => {
       console.log('WebGL context restored');
-      
+      // Handle context restored event here
     };
     renderer.domElement.addEventListener('webglcontextrestored', handleContextRestored);
 
     return () => {
-      renderer.domElement.removeEventListener('webglcontextlost', handleContextLost);
-      renderer.domElement.removeEventListener('webglcontextrestored', handleContextRestored);
+      if (renderer.domElement) {
+        renderer.domElement.removeEventListener('webglcontextlost', handleContextLost);
+        renderer.domElement.removeEventListener('webglcontextrestored', handleContextRestored);
+      }
     };
   }, []);
 

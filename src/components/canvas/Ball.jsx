@@ -1,41 +1,10 @@
-import React, { Suspense, useEffect, useRef } from "react";
-import { Canvas } from "@react-three/fiber";
-import {
-  Decal,
-  Float,
-  OrbitControls,
-  Preload,
-  useTexture,
-} from "@react-three/drei";
+import React, { useEffect, useRef } from "react";
 
-import * as THREE from "three";
-
-import CanvasLoader from "../Loader";
-
-const Ball = (props) => {
-  const [decal] = useTexture([props.imgUrl]);
-
+const Ball = ({ imgUrl }) => {
   return (
-    <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
-      <ambientLight intensity={0.25} />
-      <directionalLight position={[0, 0, 0.05]} />
-      <mesh castShadow receiveShadow scale={2.75}>
-        <icosahedronGeometry args={[1, 1]} />
-        <meshStandardMaterial
-          color='#dca7f9'
-          polygonOffset
-          polygonOffsetFactor={-5}
-          flatShading
-        />
-        <Decal
-          position={[0, 0, 1]}
-          rotation={[2 * Math.PI, 0, 6.25]}
-          scale={1}
-          map={decal}
-          flatShading
-        />
-      </mesh>
-    </Float>
+    <div style={{ position: "relative", width: "100px", height: "100px", borderRadius: "50%", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)" }}>
+      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "100%", height: "100%", background: `url(${imgUrl})`, backgroundSize: "cover", borderRadius: "50%" }}></div>
+    </div>
   );
 };
 
@@ -43,40 +12,36 @@ const BallCanvas = ({ icon }) => {
   const rendererRef = useRef(null);
 
   useEffect(() => {
-    const renderer = new THREE.WebGLRenderer();
-    rendererRef.current = renderer;
-
     const handleContextLost = (event) => {
       console.log('WebGL context lost', event);
-    
+      // Handle WebGL context lost event
     };
-    renderer.domElement.addEventListener('webglcontextlost', handleContextLost);
 
     const handleContextRestored = () => {
       console.log('WebGL context restored');
-    
+      // Handle WebGL context restored event
     };
-    renderer.domElement.addEventListener('webglcontextrestored', handleContextRestored);
 
-    return () => {
-      renderer.domElement.removeEventListener('webglcontextlost', handleContextLost);
-      renderer.domElement.removeEventListener('webglcontextrestored', handleContextRestored);
+    const cleanup = () => {
+      const canvas = rendererRef.current;
+      canvas.removeEventListener('webglcontextlost', handleContextLost);
+      canvas.removeEventListener('webglcontextrestored', handleContextRestored);
     };
+
+    const renderer = document.createElement("canvas");
+    rendererRef.current = renderer;
+
+    const canvas = renderer;
+    canvas.addEventListener('webglcontextlost', handleContextLost);
+    canvas.addEventListener('webglcontextrestored', handleContextRestored);
+
+    return cleanup;
   }, []);
 
   return (
-    <Canvas
-      frameloop='demand'
-      dpr={[1, 2]}
-      gl={{ preserveDrawingBuffer: true }}
-    >
-      <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
-      </Suspense>
-
-      <Preload all />
-    </Canvas>
+    <div style={{ width: "100%", height: "100%" }}>
+      <Ball imgUrl={icon} />
+    </div>
   );
 };
 
