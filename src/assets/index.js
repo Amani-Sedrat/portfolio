@@ -4,7 +4,7 @@ import menu from "./menu.svg";
 import close from "./close.svg";
 import css from "./tech/css.png";
 import mysql from "./tech/mysql.png";
-import figma from "./tech/figma.png";
+import powerbi from "./power.png";
 import git from "./tech/git.png";
 import html from "./tech/html.png";
 import javascript from "./tech/javascript.png";
@@ -14,11 +14,11 @@ import reactjs from "./tech/reactjs.png";
 import python from "./tech/python.png";
 import tailwind from "./tech/tailwind.png";
 import flutter from "./tech/flutter.png";
-import blender from "./tech/blender.png";
+import eviews from "./Eviews.png";
 import wepictit from "./wepictit.png";
 import car from "./cartdiag.jpg";
 import chatbot from "./chatbot.jpg";
-import planets from "./planets.png";
+import llm from "./LLM.png";
 import portf from "./portf.png";
 import studies from "./studies.png";
 import instagram from "./instagramm.png";
@@ -32,7 +32,7 @@ export {
   close,
   css,
   mysql,
-  figma,
+  powerbi,
   git,
   html,
   javascript,
@@ -42,10 +42,10 @@ export {
   python,
   tailwind,
   flutter,
-  blender,
+  eviews,
   car,
   chatbot,
-  planets,
+  llm,
   portf,
   studies,
   instagram,

@@ -11,12 +11,12 @@ import {
     nodejs,
     mongodb,
     git,
-    figma,
-    blender,
+    powerbi,
+    eviews,
     wepictit,
     car,
     chatbot,
-    planets,
+    llm,
     portf,
     studies,
 
@@ -86,16 +86,16 @@ import {
       icon: mysql,
     },
     {
-      name: "blender",
-      icon: blender,
+      name: "eviews",
+      icon: eviews,
     },
     {
       name: "git",
       icon: git,
     },
     {
-      name: "figma",
-      icon: figma,
+      name: "powerbi",
+      icon: powerbi,
     },
   
   ];
@@ -167,22 +167,27 @@ import {
      
    
     {
-      name: "Planets world",
+      name: "Q&A LLM",
       description:
-        "A basic website that displays information about planets in the solar system.",
+        "an LLM with RAG architecture to answer different questions from any given pdf",
       tags: [
         {
-          name: "Html",
+          name: "python",
           color: "blue-text-gradient",
         },
        
         {
-          name: "css",
+          name: "chromadb",
           color: "pink-text-gradient",
         },
+        {
+          name: "ollama",
+          color: "green-text-gradient",
+        },
+        
       ],
-      image: planets,
-      source_code_link: "https://github.com/Amani-Sedrat/PlanetsWorld",
+      image: llm,
+      source_code_link: "https://github.com/Amani-Sedrat/LLmExercise",
     },
     
     {
