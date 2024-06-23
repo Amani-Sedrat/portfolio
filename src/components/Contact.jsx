@@ -1,10 +1,10 @@
 import { SectionWrapper } from "../hoc";
-import { github, linkedin, instagram, facebook } from "../assets";
+import { github, linkedin, instagram, discord } from "../assets";
 
 const Contact = () => {
   return (
     <div className="bg-tertiary p-16 rounded-lg text-center">
-      <h2 className="text-3xl font-bold text-white mb-8">Contact</h2>
+      <h2 className="text-3xl font-bold text-white mb-8">connect with me </h2>
       <div className="flex justify-center mb-8">
         <a
           href="https://www.linkedin.com/in/amani-sedrat-59781926b"
@@ -13,7 +13,7 @@ const Contact = () => {
           className="mr-4"
         >
           <img
-            src={linkedin} // Replace with your LinkedIn logo image URL
+            src={linkedin} 
             alt="LinkedIn"
             className="h-8 w-8 cursor-pointer transition duration-300 transform hover:scale-110 filter-white"
           />
@@ -25,7 +25,7 @@ const Contact = () => {
           className="mx-4"
         >
           <img
-            src={github} // Replace with your GitHub logo image URL
+            src={github} 
             alt="GitHub"
             className="h-8 w-8 cursor-pointer transition duration-300 transform hover:scale-110"
           />
@@ -37,25 +37,25 @@ const Contact = () => {
           className="mx-4"
         >
           <img
-            src={instagram} // Replace with your Instagram logo image URL
+            src={instagram} 
             alt="Instagram"
             className="h-8 w-8 cursor-pointer transition duration-300 transform hover:scale-110 filter-white"
           />
         </a>
         <a
-          href="https://www.facebook.com/mi.rak.37051"
+          href="https://discord.com/invite/EaDTR9gw"
           target="_blank"
           rel="noopener noreferrer"
           className="ml-4"
         >
           <img
-            src={facebook} // Replace with your Facebook logo image URL
+            src={discord} 
             alt="Facebook"
             className="h-8 w-8 cursor-pointer transition duration-300 transform hover:scale-110 filter-white"
           />
         </a>
       </div>
-      <a href="mailto:a_sedrat@estin.dz" className="text-white text-sm">Contact me at: a_sedrat@estin.dz</a>
+      <a href="mailto:a_sedrat@estin.dz" className="text-white text-sm">or contact me at: a_sedrat@estin.dz</a>
     </div>
   );
 };

@@ -23,7 +23,7 @@ import portf from "./portf.png";
 import studies from "./studies.png";
 import instagram from "./instagramm.png";
 import linkedin from "./linkedin.png";
-import facebook from "./faccebook.png";
+import discord from "./discord.png";
 export {
   logo,
   wepictit,
@@ -50,5 +50,5 @@ export {
   studies,
   instagram,
   linkedin,
-  facebook,
+  discord,
 };
